@@ -1,0 +1,17 @@
+import csv
+from datetime import datetime
+
+def reservar_sala(sala_id, usuario_id, data, hora_inicio, hora_fim):
+    with open('reservas.csv', 'a', newline='') as csvfile:
+        fieldnames = ['sala_id', 'usuario_id', 'data', 'hora_inicio', 'hora_fim']
+        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
+
+        writer.writerow({
+            'sala_id': sala_id,
+            'usuario_id': usuario_id,
+            'data': data,
+            'hora_inicio': hora_inicio,
+            'hora_fim': hora_fim
+        })
+
+        AKAKAKAKAKA
