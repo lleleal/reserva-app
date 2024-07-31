@@ -1,8 +1,0 @@
-import csv
-
-def cadastrar_usuario(nome, email):
-    with open('usuarios.csv', 'a', newline='') as csvfile:
-        fieldnames = ['nome', 'email']
-        writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
-
-        writer.writerow({'nome': nome, 'email': email})

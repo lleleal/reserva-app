@@ -1,13 +1,8 @@
 import csv
 
-def ler_salas():
-    with open('salas.csv', newline='') as csvfile:
-        reader = csv.DictReader(csvfile)
-        return list(reader)
-
-def cadastrar_sala(nome, capacidade):
-    with open('salas.csv', 'a', newline='') as csvfile:
-        fieldnames = ['nome', 'capacidade']
+def cadastrar_usuario(nome, email):
+    with open('usuarios.csv', 'a', newline='') as csvfile:
+        fieldnames = ['nome', 'email']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
 
-        writer.writerow({'nome': nome, 'capacidade': capacidade})
+        writer.writerow({'nome': nome, 'email': email})
