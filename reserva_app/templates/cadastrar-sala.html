@@ -1,35 +1,36 @@
 {% extends "base.html" %}
+
 {% block content %}
-    <div class="container">
-        <div class="row mt-4">
-            <div class="col">
-                <h1>{{ 'Editar Sala' if editar else 'Cadastrar Sala' }}</h1>
-                <p>Utilize o formulário abaixo para {{ 'editar a' if editar else 'cadastrar uma' }} sala</p>
-            </div>
-        </div>
-        <div>
-            <div class="col">
-                <form action="{{ url_for('cadastrar_salas') }}" method="post">
-                    {% if editar %}
-                        <input type="hidden" name="sala_id" value="{{ sala.id }}">
-                    {% endif %}
-                    <div class="mb-3">
-                        <label for="tipo" class="form-label">Tipo</label>
+    <div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-8">
+                <h1 class="mb-4 text-center">Cadastrar Sala</h1>
+                <p class="text-muted text-center">Preencha o formulário abaixo para cadastrar uma nova sala.</p>
+
+                <form action="{{ url_for('cadastrar_salas') }}" method="post" class="shadow-sm p-4 bg-white rounded">
+                    <div class="mb-4">
+                        <label for="tipo" class="form-label">Tipo de Sala</label>
                         <select class="form-select" id="tipo" name="tipo">
-                            <option value="Laboratório de Informática" {% if sala and sala.tipo == 'Laboratório de Informática' %}selected{% endif %}>Laboratório de Informática</option>
-                            <option value="Laboratório de Química" {% if sala and sala.tipo == 'Laboratório de Química' %}selected{% endif %}>Laboratório de Química</option>
-                            <option value="Sala de Aula" {% if sala and sala.tipo == 'Sala de Aula' %}selected{% endif %}>Sala de Aula</option>
+                            <option selected disabled>Selecione um tipo de sala</option>
+                            <option value="Laboratório de Informática">Laboratório de Informática</option>
+                            <option value="Laboratório de Química">Laboratório de Química</option>
+                            <option value="Sala de Aula">Sala de Aula</option>
                         </select>
                     </div>
-                    <div class="mb-3">
+
+                    <div class="mb-4">
                         <label for="capacidade" class="form-label">Capacidade</label>
-                        <input type="number" class="form-control" name="capacidade" id="capacidade" value="{{ sala.capacidade if sala else '' }}">
+                        <input type="number" class="form-control" name="capacidade" id="capacidade" placeholder="Informe a capacidade da sala">
                     </div>
-                    <div class="mb-3">
+
+                    <div class="mb-4">
                         <label for="descricao" class="form-label">Descrição</label>
-                        <textarea class="form-control" name="descricao" id="descricao" cols="30" rows="10">{{ sala.descricao if sala else '' }}</textarea>
+                        <textarea class="form-control" name="descricao" id="descricao" rows="6" placeholder="Descreva as características da sala"></textarea>
                     </div>
-                    <button type="submit" class="btn btn-dark">{{ 'Salvar' if editar else 'Cadastrar' }}</button>
+
+                    <div class="d-grid">
+                        <button type="submit" class="btn btn-lg rounded-pill" style="background-color: #1abc9c; color: white; font-weight: bold; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">Cadastrar Sala</button>
+                    </div>
                 </form>
             </div>
         </div>

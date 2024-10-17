@@ -1,24 +1,30 @@
 {% extends "base-deslogado.html" %}
+
 {% block content %}
 
-  <div class="card position-absolute top-50 start-50 translate-middle w-75">
-    <div class="card-body">
-      <h5 class="card-title">Cadastro</h5>
-      <form class="card-text" action="/cadastro" method="post">
-        <div class="mb-3">
-          <label for="nome" class="form-label">Nome</label>
-          <input type="text" class="form-control" name="nome" id="nome" required>
+  <div class="card shadow-lg border-0 rounded-5 position-absolute top-50 start-50 translate-middle" style="width: 40rem; background-color: #f7f9fc;">
+    <div class="card-body p-5">
+      <h2 class="card-title text-center mb-4" style="font-weight: bold; color: #2c3e50;">Crie sua Conta</h2>
+      <p class="text-center text-muted mb-5" style="font-size: 1.1rem;">Preencha os campos abaixo para se cadastrar</p>
+
+      <form action="/cadastro" method="post">
+        <div class="form-group mb-4">
+          <label for="nome" class="form-label" style="font-weight: 600; color: #34495e;">Nome Completo</label>
+          <input type="text" class="form-control form-control-lg rounded-pill shadow-sm" name="nome" id="nome" placeholder="Digite seu nome" required>
         </div>
-        <div class="mb-3">
-          <label for="email" class="form-label">E-mail</label>
-          <input type="email" class="form-control" name="email" id="email" required>
+
+        <div class="form-group mb-4">
+          <label for="email" class="form-label" style="font-weight: 600; color: #34495e;">E-mail</label>
+          <input type="email" class="form-control form-control-lg rounded-pill shadow-sm" name="email" id="email" placeholder="Digite seu e-mail" required>
         </div>
-        <div class="mb-3">
-          <label for="password" class="form-label">Senha</label>
-          <input type="password" class="form-control" name="password" id="password" required>
+
+        <div class="form-group mb-4">
+          <label for="password" class="form-label" style="font-weight: 600; color: #34495e;">Senha</label>
+          <input type="password" class="form-control form-control-lg rounded-pill shadow-sm" name="password" id="password" placeholder="Digite sua senha" required>
         </div>
-        <div class="mb-3">
-          <button type="submit" class="btn btn-dark">Cadastrar</button>
+
+        <div class="d-grid">
+          <button type="submit" class="btn btn-lg rounded-pill" style="background-color: #1abc9c; color: white; font-weight: bold; box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);">Cadastrar</button>
         </div>
       </form>
     </div>

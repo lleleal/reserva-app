@@ -1,42 +1,47 @@
 {% extends "base.html" %}
+
 {% block content %}
-  <div class="container">
-    <div class="row mt-4">
-      <div class="col">
-        <h1>Lista de Salas</h1>
+  <div class="container mt-5">
+    <div class="row mb-4">
+      <div class="col text-center">
+        <h1 class="display-5" style="font-weight: bold; color: #2c3e50;">Lista de Salas</h1>
+        <p class="text-muted" style="font-size: 1.2rem;">Gerencie todas as salas cadastradas no sistema</p>
       </div>
     </div>
+
     <div class="row">
       <div class="col">
-        <div class="table-responsive">
-          <table class="table">
-            <thead>
+        <div class="table-responsive shadow-sm rounded-3 p-3" style="background-color: #f8f9fa;">
+          <table class="table table-hover align-middle">
+            <thead class="table-light">
               <tr>
-                <th scope="col">Id</th>
-                <th scope="col">Tipo</th>
-                <th scope="col">Descrição</th>
-                <th scope="col">Capacidade</th>
-                <th scope="col">Ativa</th>
-                <th scope="col">Ações</th>
+                <th scope="col" style="color: #2c3e50;">Tipo</th>
+                <th scope="col" style="color: #2c3e50;">Descrição</th>
+                <th scope="col" style="color: #2c3e50;">Capacidade</th>
+                <th scope="col" style="color: #2c3e50;">Ativa</th>
+                <th scope="col" style="color: #2c3e50;">Ações</th>
               </tr>
             </thead>
             <tbody>
               {% for sala in salas %}
-              <tr>
-                <td>{{ sala.id }}</td>
+              <tr class="border-bottom">
                 <td>{{ sala.tipo }}</td>
                 <td>{{ sala.descricao }}</td>
                 <td>{{ sala.capacidade }}</td>
-                <td>{{ sala.ativa }}</td>
+                <td>
+                  <span class="badge rounded-pill {{ 'bg-success' if sala.ativa == 'Sim' else 'bg-danger' }}">
+                    {{ sala.ativa }}
+                  </span>
+                </td>
                 <td>
                   <form action="{{ url_for('excluir_sala', sala_id=sala.id) }}" method="post" style="display:inline;">
-                    <button class="btn btn-sm btn-dark" type="submit">Excluir</button>
+                    <button class="btn btn-outline-danger btn-sm rounded-pill" type="submit">Excluir</button>
                   </form>
-                  <form action="{{ url_for('editar_sala', sala_id=sala.id) }}" method="get" style="display:inline;">
-                    <button class="btn btn-sm btn-dark" type="submit">Editar</button>
-                  </form>
+                  <button class="btn btn-outline-primary btn-sm rounded-pill" type="button" onclick="alert('Função não implementada')">Editar</button>
                   <form action="{{ url_for('desativar_sala', sala_id=sala.id) }}" method="post" style="display:inline;">
-                    <button class="btn btn-sm btn-dark" type="submit">{{ 'Desativar' if sala.ativa == 'Sim' else 'Ativar' }}</button>
+                    <button class="btn btn-outline-secondary btn-sm rounded-pill" type="submit">
+                      {{ 'Desativar' if sala.ativa == 'Sim' else 'Ativar' }}
+                    </button>
                   </form>
                 </td>
               </tr>
